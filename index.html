@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>4BHK house in Koramangala · 2 rooms open</title>
+<meta name="description" content="Independent 4BHK house near Wipro Signal, Koramangala. Looking for 2 female flatmates.">
+<meta property="og:title" content="4BHK house in Koramangala · 2 rooms open">
+<meta property="og:description" content="Independent house near Wipro Signal. Every room has an attached bathroom. Looking for 2 female flatmates.">
+<meta property="og:image" content="photos/IMG_7229.jpg">
+<style>
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+  body {
+    margin: 0;
+    background: #fff;
+    color: #333;
+    font: 16px/1.45 -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+  }
+  button { font: inherit; }
+  svg { display: block; }
+  a { color: inherit; }
+
+  /* ---------- Top bar: room tabs + share ---------- */
+  .nav {
+    position: sticky; top: 0; z-index: 20;
+    display: flex; align-items: center; gap: 12px;
+    padding: 30px 30px 16px;
+    background: rgba(255,255,255,.96);
+  }
+  .pills { display: flex; gap: 10px; flex: 1; min-width: 0; overflow-x: auto; scrollbar-width: none; }
+  .pills::-webkit-scrollbar { display: none; }
+  .pill, .btn {
+    flex: none;
+    display: flex; align-items: center; gap: 8px;
+    height: 44px; padding: 0 16px 0 12px;
+    border: 0; border-radius: 99px;
+    background: #ececec; color: #999;
+    font-weight: 500; font-size: 16px;
+    text-decoration: none; white-space: nowrap;
+    cursor: pointer;
+  }
+  .pill svg, .btn svg { width: 22px; height: 22px; }
+  .pill.on, .btn.go { background: #c8f5a0; color: #2f7d1b; font-weight: 600; }
+  .btn.share { color: #666; }
+
+  /* ---------- Board ---------- */
+  .board { width: 872px; max-width: 100%; margin: 0 auto; padding: 40px 0 180px; }
+  .cols { display: flex; gap: 88px; align-items: flex-start; }
+  .col { width: 392px; display: flex; flex-direction: column; gap: 104px; }
+
+  .card {
+    position: relative;
+    background: #e6e6e6;
+    border-radius: 12px;
+  }
+  .card.photo { cursor: zoom-in; }
+  .media { border-radius: 12px 12px 0 0; overflow: hidden; background: #ddd; }
+  .card img { display: block; width: 100%; object-fit: cover; }
+  .badge {
+    position: absolute; top: -11px; right: 8px; z-index: 2;
+    background: #fff; color: #9a9a9a;
+    border: 1px solid #e2e2e2; border-radius: 7px;
+    font-size: 13px; line-height: 19px; padding: 0 6px;
+  }
+  .foot { padding: 9px 10px 12px; }
+  .title { font-size: 15px; color: #333; line-height: 1.35; }
+  .src { font-size: 13px; color: #8a8a8a; margin-top: 3px; line-height: 1.35; }
+  .src + .src { margin-top: 1px; }
+
+  /* intro card across both columns */
+  .intro { display: flex; margin-bottom: 104px; overflow: hidden; }
+  .intro .media { flex: 0 0 392px; border-radius: 12px 0 0 12px; cursor: zoom-in; position: relative; }
+  .intro .media img { height: 100%; }
+  .intro .badge { top: 10px; right: auto; left: 10px; }
+  .intro .text { flex: 1; padding: 26px 26px 22px; display: flex; flex-direction: column; }
+  .intro h1 { margin: 0; font-weight: 500; font-size: 28px; line-height: 1.2; color: #111; }
+  .intro .where { color: #8a8a8a; font-size: 15px; margin: 8px 0 18px; }
+  .intro .where a { color: #2a7de1; text-decoration: none; }
+  .facts { list-style: none; margin: 0 0 20px; padding: 0; font-size: 15px; }
+  .facts li { display: flex; justify-content: space-between; gap: 14px; padding: 6px 0; border-bottom: 1px solid #d6d6d6; }
+  .facts li:last-child { border: 0; }
+  .facts li span:first-child { color: #8a8a8a; flex: none; }
+  .facts li span:last-child { text-align: right; }
+  .split { display: flex; gap: 22px; font-size: 15px; }
+  .split > div { flex: 1; }
+  .split .h { color: #8a8a8a; padding-bottom: 6px; border-bottom: 1px solid #d6d6d6; margin-bottom: 6px; }
+  .split ul { list-style: none; margin: 0; padding: 0; }
+  .split li { padding: 3px 0; line-height: 1.35; }
+  .intro .btns { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; }
+  .todo { background: #ffe58a; border-radius: 4px; padding: 0 3px; }
+
+  /* text cards */
+  .quote { padding: 10px 10px 12px; }
+  .quote .q { font-size: 17px; line-height: 1.55; color: #333; }
+  .quote .meta { margin-top: 40px; }
+  .quote .btns { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+
+  /* collage: 3 x 2 squares */
+  .grid6 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
+  .grid6 img { aspect-ratio: 1; }
+  .pano6 > img { aspect-ratio: 1600 / 618; margin-bottom: 3px; }
+  /* tall photos side by side */
+  .row4 { display: flex; gap: 4px; padding: 14px 10px 0; background: #fff; }
+  .row4 img { flex: 1; min-width: 0; aspect-ratio: 9 / 15; border-radius: 3px; }
+  /* carousel: next photo peeks in at the right, round arrow */
+  .car { position: relative; }
+  .track { display: flex; gap: 3px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; }
+  .track::-webkit-scrollbar { display: none; }
+  .track img { flex: 0 0 calc(100% - 22px); scroll-snap-align: start; aspect-ratio: 4 / 5; }
+  .arrow {
+    position: absolute; top: 50%; right: 18px; transform: translateY(-50%);
+    width: 30px; height: 30px; border-radius: 50%;
+    border: 0; background: rgba(40,40,40,.62); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+  }
+  .arrow svg { width: 16px; height: 16px; }
+  .arrow.prev { right: auto; left: 8px; }
+  .arrow[hidden] { display: none; }
+  /* map card */
+  .card[id] { scroll-margin-top: 110px; }
+  .mapbox { aspect-ratio: 1; background: #ececec; }
+  .mapbox iframe { display: block; width: 100%; height: 100%; border: 0; }
+  .foot a { color: #2a7de1; text-decoration: none; }
+
+  /* ---------- Bottom-left dock (Sublime's layout) ---------- */
+  .dock {
+    position: fixed; left: 30px; bottom: 26px; z-index: 20;
+    display: flex; align-items: center; gap: 6px;
+    background: rgba(244,244,244,.95);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border-radius: 24px;
+    padding: 8px;
+    box-shadow: 0 2px 16px rgba(0,0,0,.08);
+  }
+  .dtab {
+    display: flex; flex-direction: column; align-items: center; gap: 3px;
+    min-width: 82px; padding: 10px 12px 9px;
+    border: 0; border-radius: 16px; background: none;
+    color: #9a9a9a; font-size: 14px; font-weight: 600; line-height: 1.1;
+    cursor: pointer;
+  }
+  .dtab svg { width: 30px; height: 30px; }
+  .dtab.on { background: #fff; color: #222; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+  .dock .gap { width: 86px; }
+  .mailbox {
+    position: relative;
+    width: 52px; height: 52px; border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    background: #eaeaea; color: #9a9a9a;
+    box-shadow: 0 1px 3px rgba(0,0,0,.06);
+  }
+  .mailbox svg { width: 28px; height: 28px; }
+  .mailbox .dot { position: absolute; top: -3px; right: -3px; width: 12px; height: 12px; border-radius: 50%; background: #ee3fe0; }
+  .avatar { border: 0; padding: 4px; background: #fff; border-radius: 18px; cursor: zoom-in; box-shadow: 0 1px 5px rgba(0,0,0,.1); }
+  .avatar img { display: block; width: 56px; height: 56px; object-fit: cover; border-radius: 14px; }
+
+  .toast {
+    position: fixed; left: 50%; top: 92px; z-index: 30;
+    transform: translate(-50%, -8px); opacity: 0; pointer-events: none;
+    max-width: min(420px, calc(100vw - 24px));
+    background: #222; color: #fff; font-size: 14px; text-align: center;
+    padding: 10px 16px; border-radius: 14px;
+    transition: opacity .2s, transform .2s;
+  }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+  @media (max-width: 640px) { .toast { top: 70px; } }
+
+  /* ---------- Lightbox ---------- */
+  .lb { position: fixed; inset: 0; z-index: 50; background: #fff; display: none; align-items: center; justify-content: center; touch-action: pinch-zoom; overscroll-behavior: contain; }
+  .lb.open { display: flex; }
+  .lb img { max-width: 94vw; max-height: 82vh; max-height: 78dvh; object-fit: contain; border-radius: 12px; transition: transform .2s, opacity .2s; }
+  .lb img.drag { transition: none; }
+  .lb .cap .n { margin-left: 10px; color: #aaa; }
+  .lb .cap { position: absolute; bottom: 18px; left: 0; right: 0; text-align: center; color: #666; font-size: 15px; padding: 0 60px; }
+  .lb button { position: absolute; border: 0; background: #ececec; color: #666; width: 46px; height: 46px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  .lb button svg { width: 20px; height: 20px; }
+  .lb button[hidden] { display: none; }
+  .lb .lprev { left: 16px; top: 50%; transform: translateY(-50%); }
+  .lb .lnext { right: 16px; top: 50%; transform: translateY(-50%); }
+  /* phones: arrows go to the bottom corners so they don't cover the photo; swiping also works */
+  @media (pointer: coarse), (max-width: 640px) {
+    .lb .lprev, .lb .lnext { top: auto; bottom: calc(14px + env(safe-area-inset-bottom)); transform: none; }
+    .lb .lprev { left: 14px; }
+    .lb .lnext { right: 14px; }
+    .lb .cap { bottom: calc(20px + env(safe-area-inset-bottom)); padding: 0 72px; font-size: 14px; line-height: 1.35; }
+    .lb .cap .n { display: block; margin: 2px 0 0; }
+    .lb .lclose { top: calc(14px + env(safe-area-inset-top)); }
+    .arrow { width: 34px; height: 34px; }
+  }
+  .lb .lclose { right: 16px; top: 16px; }
+
+  /* ---------- Narrow screens ---------- */
+  @media (max-width: 920px) {
+    .board { padding: 30px 16px 180px; }
+    .cols { gap: 24px; }
+    .col { width: auto; flex: 1; min-width: 0; gap: 64px; }
+    .intro { margin-bottom: 64px; }
+    .intro .media { flex-basis: 45%; }
+  }
+  @media (max-width: 640px) {
+    .nav { padding: 12px 12px 10px; gap: 8px; }
+    .nav .btn.share span { display: none; }
+    .nav .btn.share { padding: 0 11px; }
+    .board { padding: 16px 14px 150px; }
+    .col { gap: 40px; }
+    .intro { flex-direction: column; margin-bottom: 40px; }
+    .intro .media { flex: none; border-radius: 12px 12px 0 0; }
+    .intro .media img { height: auto; aspect-ratio: 4 / 3; }
+    .intro .text { padding: 18px 14px 16px; }
+    .intro h1 { font-size: 25px; }
+    .split { flex-direction: column; gap: 16px; }
+    .dock { left: 10px; right: 10px; bottom: calc(10px + env(safe-area-inset-bottom)); }
+    .dock .gap { flex: 1; width: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="pills" id="pills"></div>
+  <button class="btn share" id="share" title="Send this page to a friend">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg><span>Send to a friend</span>
+  </button>
+</header>
+
+<main class="board" id="board"></main>
+<div class="toast" id="toast" role="status"></div>
+
+<nav class="dock">
+  <button class="dtab on" id="dockHouse">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2.5 10.8 12 3l9.5 7.8V20a1.2 1.2 0 0 1-1.2 1.2h-5.6v-6.4H9.3v6.4H3.7A1.2 1.2 0 0 1 2.5 20z"/></svg>House
+  </button>
+  <button class="dtab" id="dockMap">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.8a7.6 7.6 0 0 0-7.6 7.6c0 5.4 6.3 12 7 12.7a.8.8 0 0 0 1.2 0c.7-.7 7-7.3 7-12.7A7.6 7.6 0 0 0 12 1.8zm0 10.6a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>Map
+  </button>
+  <span class="gap"></span>
+  <a class="mailbox mail" title="Email me" aria-label="Email me">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.5 4.5h17A1.5 1.5 0 0 1 22 6v.4l-10 6.3L2 6.4V6a1.5 1.5 0 0 1 1.5-1.5zM2 8.7l9.5 6a1 1 0 0 0 1 0l9.5-6V18a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 18z"/></svg>
+    <span class="dot"></span>
+  </a>
+  <button class="avatar" id="dockPhotos" title="All 32 photos" aria-label="See all photos"><img src="thumbs/IMG_7229.jpg" alt=""></button>
+</nav>
+
+<div class="lb" id="lb">
+  <img alt="">
+  <div class="cap"></div>
+  <button class="lprev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+  <button class="lnext" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+  <button class="lclose" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+
+<script>
+// ===== FILL THESE IN before sharing. Blank ones show up highlighted in yellow on the page. =====
+const CONFIG = {
+  rent: "₹20k per person · ₹80k total",
+  deposit: "₹5L",
+  moveIn: "November",
+  email: "ijain7131@gmail.com",
+};
+// ==============================================================================================
+
+// [photo number, caption, room], in the order they are shown
+// caption only where it tells you something the photo doesn't
+const PHOTO_LIST = [
+  // ground floor
+  [7229, "", "Living room"],
+  [7227, "", "Living room"],
+  [7230, "", "Living room"],
+  [7228, "Dining area", "Living room"],
+  [7231, "Washbasin by the stairs", "Living room"],
+  [7244, "Stairs up to the bedrooms", "Living room"],
+  // kitchen
+  [7234, "", "Kitchen"],
+  [7232, "", "Kitchen"],
+  [7236, "", "Kitchen"],
+  [7233, "", "Kitchen"],
+  [7237, "", "Kitchen"],
+  [7238, "", "Kitchen"],
+  [7235, "Back door to the washing area", "Kitchen"],
+  // bedroom with the full-height wardrobe + its bathroom
+  [7243, "", "Bedrooms"],
+  [7239, "", "Bedrooms"],
+  [7240, "", "Bedrooms"],
+  [7241, "", "Bedrooms"],
+  [7242, "", "Bedrooms"],
+  // bedroom with the dresser + its bathroom
+  [7245, "", "Bedrooms"],
+  [7246, "", "Bedrooms"],
+  [7247, "", "Bedrooms"],
+  [7248, "", "Bedrooms"],
+  // first-floor bedroom + its bathroom
+  [7250, "First floor", "Bedrooms"],
+  [7251, "", "Bedrooms"],
+  [7249, "", "Bedrooms"],
+  [7252, "", "Bedrooms"],
+  // bedroom with the brown wardrobe + its bathroom
+  [7256, "", "Bedrooms"],
+  [7257, "", "Bedrooms"],
+  // terrace, parking
+  [7255, "", "Terrace"],
+  [7253, "Utility room for washing and drying", "Terrace"],
+  [7254, "Drying space", "Terrace"],
+  [7258, "Parking inside the gate", "Parking"],
+];
+const PHOTOS = Object.fromEntries(PHOTO_LIST.map(([n, cap, room]) => [n, [cap, room]]));
+const ORDER = PHOTO_LIST.map(p => p[0]);
+// height / width of each photo
+const R = n => ({7227:1.333,7228:1.333,7229:1.333,7230:1.333,7231:1.333,7232:1.333,7233:0.75,7234:0.386,7258:1.333})[n] || 1.779;
+
+// The "All" board, in reading order (each card goes into the shorter column).
+// kinds: carousel, grid6, row4, single, quote, contact
+const CARDS = [
+  { kind: "carousel", photos: [7227, 7230, 7228, 7231, 7244], title: "Living and dining", src: ["Shared"] },
+  { kind: "pano6", photos: [7234, 7232, 7236, 7233, 7237, 7238, 7235], title: "Kitchen, with a back door to the washing area", src: ["Shared"] },
+  { kind: "quote", room: "Bedrooms", q: "The bedrooms are spread across different floors, so everyone gets a bit of their own space while still having common areas to hang out in.", src: ["How the house is laid out"] },
+  { kind: "carousel", photos: [7243, 7239, 7240, 7241, 7242], title: "Bedroom + attached bathroom", src: [] },
+  { kind: "carousel", photos: [7245, 7246, 7247, 7248], title: "Bedroom + attached bathroom", src: [] },
+  { kind: "carousel", photos: [7250, 7251, 7249, 7252], title: "Bedroom + attached bathroom", src: ["First floor · AC · bathtub"] },
+  { kind: "carousel", photos: [7256, 7257], title: "Bedroom + attached bathroom", src: [] },
+  { kind: "carousel", photos: [7255, 7253, 7254], title: "Terrace, with a utility room for washing", src: ["Shared"] },
+  { kind: "single", photos: [7258], title: "Parking inside the gate", src: ["Shared"] },
+  { kind: "quote", id: "about", q: "I'm 24 and work in marketing at a startup. I'd love to find flatmates who are friendly, considerate, and up for making the place feel like a home rather than just somewhere we sleep.", src: ["About me"] },
+  { kind: "quote", q: "Looking with a friend? Even better :)", src: [] },
+];
+// Last cards on the "All" board, ending the two columns: where it is + how to get in touch
+const END = [{ kind: "map" }, { kind: "contact" }];
+CARDS.forEach(c => { if (c.photos) c.room = PHOTOS[c.photos[0]][1]; });
+
+// Wipro Signal, 80 Feet Road, Koramangala 1st Block (the house is near here; the map does not show the house itself)
+const SIGNAL = [12.9302, 77.6333];
+const GMAPS_EMBED = `https://maps.google.com/maps?q=${SIGNAL.join(",")}&z=16&output=embed`;
+const GMAPS_LINK = `https://www.google.com/maps/search/?api=1&query=${SIGNAL.join(",")}`;
+
+const ICON = d => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="${d}"/></svg>`;
+const TABS = [
+  ["All", "M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"],
+  ["Living room", "M4 11V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3M2 13a2 2 0 0 1 4 0v2h12v-2a2 2 0 0 1 4 0v5H2zM5 18v2M19 18v2"],
+  ["Kitchen", "M3 10h18M5 10v7a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-7M9 7c0-1 1-1 1-2.5M14 7c0-1 1-1 1-2.5"],
+  ["Bedrooms", "M2 19V7M2 15h20v4M22 15v-3a3 3 0 0 0-3-3h-8v6M6.5 11a1.5 1.5 0 1 0 0 .01"],
+  ["Terrace", "M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"],
+  ["Parking", "M5 17h14v-5l-2-5H7l-2 5zM5 12h14M8 15h.01M16 15h.01M6 17v2M18 17v2"],
+];
+</script>
+
+<script>
+const $ = s => document.querySelector(s);
+const board = $("#board");
+const fill = v => v || `<span class="todo">[fill in]</span>`;
+const MAIL = `mailto:${CONFIG.email}?subject=` + encodeURIComponent("Room in the Koramangala house") + "&body=" + encodeURIComponent("Hi! I saw the Koramangala house page. A bit about me:\n\n");
+const MAIL_ICON = ICON("M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zM3.5 6.5 12 13l8.5-6.5");
+const SHARE_ICON = ICON("M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6");
+let tab = "All";
+
+document.querySelectorAll(".mail").forEach(a => a.href = MAIL);
+
+// ----- tabs -----
+TABS.forEach(([name, d]) => {
+  const b = document.createElement("button");
+  b.className = "pill";
+  b.dataset.tab = name;
+  b.innerHTML = ICON(d) + name;
+  b.onclick = () => { tab = name; render(); window.scrollTo({ top: 0 }); };
+  $("#pills").appendChild(b);
+});
+
+// ----- share: phone share sheet if there is one, otherwise copy the link -----
+// Phone share sheet when there is one; otherwise copy the link. Always says what happened.
+async function share() {
+  const url = location.href;
+  if (location.protocol === "file:") {
+    toast("This page is a file on your computer. Put it online first, then this shares its link.");
+    return;
+  }
+  if (navigator.share) {
+    try { await navigator.share({ title: document.title, text: "Room for a female flatmate in a 4BHK house in Koramangala", url }); return; }
+    catch (e) { if (e.name === "AbortError") return; }   // closed the share sheet: do nothing
+  }
+  toast(await copy(url) ? "Link copied" : "Couldn't copy. The link is: " + url);
+}
+async function copy(text) {
+  try { await navigator.clipboard.writeText(text); return true; } catch (e) {}
+  const t = document.createElement("textarea");   // older browsers
+  t.value = text; t.style.position = "fixed"; t.style.opacity = "0";
+  document.body.appendChild(t); t.select();
+  let ok = false;
+  try { ok = document.execCommand("copy"); } catch (e) {}
+  t.remove();
+  return ok;
+}
+let toastTimer;
+function toast(msg) {
+  const el = $("#toast");
+  el.textContent = msg;
+  el.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove("show"), 3500);
+}
+$("#share").onclick = share;
+
+// ----- dock -----
+$("#dockHouse").onclick = () => {
+  if (tab !== "All") { tab = "All"; render(); }
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
+$("#dockMap").onclick = () => {
+  if (tab !== "All") { tab = "All"; render(); }
+  document.getElementById("where").scrollIntoView({ behavior: "smooth", block: "center" });
+};
+$("#dockPhotos").onclick = () => openPhotos(ORDER, 0);
+// "Map" is highlighted while the map card is on screen, "House" otherwise
+function updateDock() {
+  const map = document.getElementById("where");
+  const r = map && map.getBoundingClientRect();
+  const onMap = !!r && r.top < innerHeight * 0.75 && r.bottom > 0;
+  $("#dockMap").classList.toggle("on", onMap);
+  $("#dockHouse").classList.toggle("on", !onMap);
+}
+addEventListener("scroll", updateDock, { passive: true });
+
+// ----- cards -----
+const thumb = n => `thumbs/IMG_${n}.jpg`;
+const chev = d => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="${d}"/></svg>`;
+const imgs = ps => ps.map((n, i) => `<img src="${thumb(n)}" data-i="${i}" alt="" loading="lazy">`).join("");
+const foot = c => `<div class="foot">${c.title ? `<div class="title">${c.title}</div>` : ""}${(c.src || [c.room]).map(s => `<div class="src">${s}</div>`).join("")}</div>`;
+const openPhotos = (ps, i) => openLb(ps.map(n => ({ n, cap: PHOTOS[n][0] })), i);
+
+function intro() {
+  const all = ORDER;
+  const el = document.createElement("section");
+  el.className = "card intro";
+  el.innerHTML = `
+    <div class="media"><span class="badge">${all.length} photos</span><img src="photos/IMG_7229.jpg" alt=""></div>
+    <div class="text">
+      <h1>A 4BHK independent house in Koramangala, with 2 rooms open</h1>
+      <div class="where">Near Wipro Signal · looking for 2 female flatmates, preferably in their 20s ·
+        <a href="#where">see it on the map</a></div>
+      <ul class="facts">
+        <li><span>Rent</span><span>${CONFIG.rent}</span></li>
+        <li><span>Deposit</span><span>${CONFIG.deposit}</span></li>
+        <li><span>Move-in</span><span>${fill(CONFIG.moveIn)}</span></li>
+      </ul>
+      <div class="split">
+        <div><div class="h">Private</div><ul>
+          <li>Bedroom with an attached bathroom (every room has one)</li>
+          <li>No balconies</li>
+        </ul></div>
+        <div><div class="h">Shared</div><ul>
+          <li>Living room</li>
+          <li>Dining area</li>
+          <li>Kitchen</li>
+          <li>Terrace with a utility room for washing and drying</li>
+          <li>Washing and drying area by the kitchen</li>
+          <li>Parking inside the gate</li>
+        </ul></div>
+      </div>
+    </div>`;
+  el.querySelector(".media").onclick = () => openPhotos(all, 0);
+  return el;
+}
+
+// Returns the card and its rough height (in column widths) for balancing the columns.
+function build(c) {
+  const el = document.createElement("article");
+  el.className = "card";
+  if (c.id) el.id = c.id;
+  const ps = c.photos || [];
+  let html = ps.length > 1 ? `<span class="badge">${ps.length}</span>` : "";
+  let h;
+
+  if (c.kind === "quote") {
+    el.classList.add("quote");
+    html += `<div class="q">${c.q}</div><div class="meta">${c.src.map(s => `<div class="src">${s}</div>`).join("")}</div>`;
+    h = 0.3 + c.q.length / 220;
+  } else if (c.kind === "contact") {
+    el.classList.add("quote");
+    html += `<div class="q">Email me with a little about yourself, and we can chat, share more details, and arrange a visit.</div>
+      <div class="btns"><a class="btn go" href="${MAIL}">${MAIL_ICON}${CONFIG.email}</a></div>
+      <div class="meta"><div class="src">Know someone who's house hunting?</div>
+      <div class="btns" style="margin-top:8px"><button class="btn share">${SHARE_ICON}<span>Send them this page</span></button></div></div>`;
+    h = 0.75;
+  } else if (c.kind === "map") {
+    el.id = "where";
+    html += `<div class="media mapbox"><iframe src="${GMAPS_EMBED}" title="Map of the area around Wipro Signal, Koramangala" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+      <div class="foot"><div class="title">Near Wipro Signal, Koramangala</div>
+      <div class="src">The pin is the signal; I'll share the exact address when we talk · <a href="${GMAPS_LINK}" target="_blank" rel="noopener">open in Google Maps</a></div></div>`;
+    h = 1 + 0.25;
+  } else if (c.kind === "pano6") {
+    html += `<div class="media pano6">${imgs(ps.slice(0, 1))}<div class="grid6">${ps.slice(1).map((n, i) => `<img src="${thumb(n)}" data-i="${i + 1}" alt="" loading="lazy">`).join("")}</div></div>` + foot(c);
+    h = 1.3;
+  } else if (c.kind === "grid6") {
+    html += `<div class="media grid6">${imgs(ps)}</div>` + foot(c);
+    h = 0.67 + 0.25;
+  } else if (c.kind === "row4") {
+    html += `<div class="media row4">${imgs(ps)}</div>` + foot(c);
+    h = 0.45 + 0.2;
+  } else if (c.kind === "carousel") {
+    html += `<div class="media car"><div class="track">${imgs(ps)}</div>
+      <button class="arrow prev" hidden aria-label="Previous">${chev("M15 5l-7 7 7 7")}</button>
+      <button class="arrow next" aria-label="Next">${chev("M9 5l7 7-7 7")}</button></div>` + foot(c);
+    h = 1.2 + 0.22;
+  } else { // single
+    const r = Math.min(R(ps[0]), 1.3);
+    html += `<div class="media"><img src="${thumb(ps[0])}" data-i="0" alt="" loading="lazy" style="aspect-ratio:1/${r}"></div>` + foot(c);
+    h = r + 0.2;
+  }
+  el.innerHTML = html;
+
+  if (ps.length) {
+    el.classList.add("photo");
+    el.onclick = e => {
+      if (e.target.closest(".arrow")) return;
+      openPhotos(ps, e.target.dataset.i ? +e.target.dataset.i : 0);
+    };
+  }
+  el.querySelectorAll(".share").forEach(b => b.onclick = share);
+
+  const track = el.querySelector(".track");
+  if (track) {
+    const prev = el.querySelector(".arrow.prev"), next = el.querySelector(".arrow.next");
+    const step = () => track.clientWidth - 19;
+    prev.onclick = () => track.scrollBy({ left: -step(), behavior: "smooth" });
+    next.onclick = () => track.scrollBy({ left: step(), behavior: "smooth" });
+    track.addEventListener("scroll", () => {
+      prev.hidden = track.scrollLeft < 10;
+      next.hidden = track.scrollLeft > track.scrollWidth - track.clientWidth - 10;
+    });
+  }
+  return [el, h + 0.28];
+}
+
+function render() {
+  document.querySelectorAll(".pill").forEach(p => p.classList.toggle("on", p.dataset.tab === tab));
+  board.innerHTML = "";
+  let list;
+  if (tab === "All") {
+    board.appendChild(intro());
+    list = CARDS;
+  } else {
+    // Bedrooms: one card per bedroom with its bathroom. Other rooms: one card per photo.
+    list = tab === "Bedrooms" ? CARDS.filter(c => c.room === "Bedrooms")
+      : ORDER.filter(n => PHOTOS[n][1] === tab).map(n => ({ kind: "single", photos: [n], title: PHOTOS[n][0] || tab, src: PHOTOS[n][0] ? [tab] : [] }));
+  }
+  const wrap = document.createElement("div");
+  wrap.className = "cols";
+  board.appendChild(wrap);
+  const cols = Array.from({ length: window.innerWidth <= 640 ? 1 : 2 }, () => {
+    const d = document.createElement("div");
+    d.className = "col";
+    wrap.appendChild(d);
+    return { d, h: 0 };
+  });
+  // each card goes into whichever column is currently shorter (real heights: images have fixed aspect ratios)
+  const place = c => {
+    const col = cols.reduce((x, y) => (y.d.offsetHeight < x.d.offsetHeight ? y : x));
+    col.d.appendChild(build(c)[0]);
+  };
+  list.forEach(place);
+  // finish with the map and the contact card, so they end the two columns next to each other
+  (tab === "All" ? END : END.slice(1)).forEach(place);
+  updateDock();
+}
+render();
+let one = window.innerWidth <= 640;
+window.addEventListener("resize", () => { if ((window.innerWidth <= 640) !== one) { one = !one; render(); } });
+
+// ----- lightbox -----
+const lb = $("#lb"), lbImg = lb.querySelector("img"), lbCap = lb.querySelector(".cap");
+let set = [], cur = 0;
+const full = n => `photos/IMG_${n}.jpg`;
+function show(i) {
+  cur = (i + set.length) % set.length;
+  lbImg.src = full(set[cur].n);
+  lbCap.textContent = set[cur].cap || "";
+  if (set.length > 1) lbCap.insertAdjacentHTML("beforeend", `<span class="n">${cur + 1} / ${set.length}</span>`);
+  lb.querySelector(".lprev").hidden = lb.querySelector(".lnext").hidden = set.length < 2;
+  // load the photos on either side so swiping doesn't wait
+  [1, -1].forEach(d => { if (set.length > 1) new Image().src = full(set[(cur + d + set.length) % set.length].n); });
+}
+function openLb(s, i) {
+  set = s; show(i);
+  lb.classList.add("open");
+  document.documentElement.style.overflow = "hidden";   // the page behind doesn't scroll
+}
+function closeLb() {
+  lb.classList.remove("open");
+  document.documentElement.style.overflow = "";
+}
+lb.querySelector(".lprev").onclick = e => { e.stopPropagation(); show(cur - 1); };
+lb.querySelector(".lnext").onclick = e => { e.stopPropagation(); show(cur + 1); };
+lb.querySelector(".lclose").onclick = closeLb;
+lb.onclick = e => { if (e.target === lb) closeLb(); };
+document.addEventListener("keydown", e => {
+  if (!lb.classList.contains("open")) return;
+  if (e.key === "ArrowLeft") show(cur - 1);
+  if (e.key === "ArrowRight") show(cur + 1);
+  if (e.key === "Escape") closeLb();
+});
+
+// Touch: the photo follows the finger; swipe sideways for the next photo, swipe down to close
+let t0 = null;
+lb.addEventListener("touchstart", e => {
+  if (e.touches.length !== 1) { t0 = null; return; }   // two fingers = pinch zoom, leave it alone
+  t0 = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+  lbImg.classList.add("drag");
+}, { passive: true });
+lb.addEventListener("touchmove", e => {
+  if (!t0 || e.touches.length !== 1) return;
+  const dx = e.touches[0].clientX - t0.x, dy = e.touches[0].clientY - t0.y;
+  if (Math.abs(dx) > Math.abs(dy)) lbImg.style.transform = `translateX(${dx}px)`;
+  else if (dy > 0) { lbImg.style.transform = `translateY(${dy}px)`; lbImg.style.opacity = Math.max(.3, 1 - dy / 400); }
+}, { passive: true });
+lb.addEventListener("touchend", e => {
+  if (!t0) return;
+  const dx = e.changedTouches[0].clientX - t0.x, dy = e.changedTouches[0].clientY - t0.y;
+  t0 = null;
+  lbImg.classList.remove("drag");
+  lbImg.style.transform = "";
+  lbImg.style.opacity = "";
+  if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) && set.length > 1) show(cur + (dx < 0 ? 1 : -1));
+  else if (dy > 90 && dy > Math.abs(dx)) closeLb();
+});
+</script>
+</body>
+</html>
